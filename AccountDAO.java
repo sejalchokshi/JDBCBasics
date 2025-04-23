@@ -19,11 +19,19 @@ public class AccountDAO {
 			// Create a statement Object
 			Statement statement = connection.createStatement();
 			
-			// Execute a SQL Command using statement object
-			int executeUpdate = statement.executeUpdate("insert into accounts (id, firstname, lastname, balance) values (2,'John','Doe',100)");
+			// Insert Command or Execute a SQL Command using statement object
+			int executeUpdate = statement.executeUpdate("insert into accounts (id, firstname, lastname, balance) values (8,'John','Doe',100)");
 			
 			System.out.println("Execute Update : "+executeUpdate);
 			
+			// UPDATE Command
+			int updateResult = statement.executeUpdate("UPDATE accounts SET balance = 50 WHERE id = 2");
+			System.out.println("Update Result: " + updateResult);
+
+			// DELETE Command
+			int deleteResult = statement.executeUpdate("DELETE FROM accounts WHERE id = 3");
+			System.out.println("Delete Result: " + deleteResult);
+
 			//Close Statement and connection
 			statement.close();
 			connection.close();
